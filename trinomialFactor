@@ -1,51 +1,59 @@
 package src;
-
 import java.util.Scanner;
-
-public class calc {
-	
+public class calc {	
 	Scanner sc = new Scanner(System.in);
-	
 	public calc (){
+		System.out.println("Enter variable a: ");
 		double a = sc.nextInt();
+		System.out.println("Enter variable b: ");
 		double b = sc.nextInt();
+		System.out.println("Enter variable c: ");
 		double c = sc.nextInt();
+		System.out.println("Enter variable d: ");
 		double d = sc.nextInt();
 		double x = -10;
 		boolean notXInt = true;
 		boolean displaying = true;
 		double[] xInts;
 		int counter = 0;
+		char leading = ' ';
 		int displayCounter = 0;
-		xInts = new double[10];
-				
-		while (notXInt == true){
-			
+		xInts = new double[3];		
+		while (notXInt == true){	
 			double y = a * Math.pow(x, 3) + b * Math.pow(x, 2) + c * x + d;
-			
 			if (y == 0){
 				xInts[counter] = x;
 				counter++;
 			}
 			x++;
-			
 			//stop the loop
 			if (x > 100){
 				notXInt = false;
 			}
 		}
-		
+		if (a < 0){
+			leading = '-';
+		}
 		while (displaying == true){
-			System.out.println(xInts[displayCounter]);
-			displayCounter++;
-			
+			if (xInts[2] == 0 & d != 0){
+				if (a * Math.pow(xInts[0]-0.01, 3) + b * Math.pow(xInts[0]-0.01, 2) + c * xInts[0]-0.01 + d  < a * Math.pow(xInts[0], 3) + b * Math.pow(xInts[0], 2) + c * xInts[0] + d &
+					a * Math.pow(xInts[0]+0.01, 3) + b * Math.pow(xInts[0]+0.01, 2) + c * xInts[0]+0.01 + d  < a * Math.pow(xInts[0], 3) + b * Math.pow(xInts[0], 2) + c * xInts[0] + d ) {
+					System.out.println("y  = " + leading + "(x+" + -1 * xInts[0] + ")(x+" + -1 * xInts[0] + ")(x+" + -1 * xInts[1] + ")");
+					displayCounter = displayCounter + 3;
+				} else {
+					System.out.println("y  = " + leading + "(x+" + -1 * xInts[0] + ")(x+" + -1 * xInts[1] + ")(x+" + -1 * xInts[1] + ")");
+					displayCounter = displayCounter + 3;
+				} 
+			} else {
+				System.out.println("y  = " + leading + "(x+" + -1 * xInts[0] + ")(x+" + -1 * xInts[1] + ")(x+" + -1 * xInts[2] + ")");
+				displayCounter = displayCounter + 3;
+			}
+			//end loop
 			if(displayCounter == xInts.length){
 				displaying = false;
 			}
-		}
-		
+		}	
 	}
-	
 	public static void main(String args[]){
 		calc c = new calc(); 
 	}
