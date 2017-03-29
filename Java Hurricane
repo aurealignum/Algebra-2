@@ -1,0 +1,42 @@
+/*
+    Hurricane
+    Austin Todd
+    3/29/2017
+    A program that provides a rating according to a user input wind speed
+*/
+package hurricane_at;
+
+import java.util.Scanner;
+
+public class Hurricane_AT {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] mph = new int[5];
+        mph[0] = 74;
+        mph[1] = 95;
+        mph[2] = 110;
+        mph[3] = 130;
+        mph[4] = 155;
+        
+        System.out.println("Enter the hurricane category: ");
+        int cat = sc.nextInt();
+        
+        if (cat == 1) {
+            int kt = (mph[0]*5280) / 6076;
+            
+            System.out.println(kt);
+        } else if (cat == 2) {
+            System.out.println();
+        } else if (cat == 3) {
+            System.out.println();
+        } else if (cat == 4) {
+            System.out.println();
+        } else if (cat == 5) {
+            System.out.println();
+        } else {
+            System.out.println("This is not a hurricane category");
+        }
+    }
+    
+}
